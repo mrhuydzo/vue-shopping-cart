@@ -4,10 +4,11 @@
         <div class="panel panel-primary">
             <div class="panel-heading"><h1 class="panel-title">List Products</h1></div>
             <div class="panel-body" id="list-product">
-                <product-item/>
-                <product-item/>
-                <product-item/>
-                <product-item/>
+                <product-item
+                        v-for="item in
+                        products" :key="item.id"
+                        :product="item"
+                />
             </div>
         </div>
     </div>
@@ -16,16 +17,20 @@
 
 <script>
     import ProductItem from '../components/ProductItem'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'product-list',
         components: {
             ProductItem
         },
-        data () {
-            return {
-
-            }
+        computed: {
+            ...mapState({
+                products: state => state.product.productList
+            })
+        },
+        data() {
+            return {}
         }
     }
 </script>

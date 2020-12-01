@@ -7,6 +7,7 @@
                 <cart-body-table/>
                 <cart-footer/>
             </table>
+            <notify/>
         </div>
     </div>
 </template>
@@ -14,6 +15,7 @@
     import CartHeader from '../components/CartHeader';
     import CartBodyTable from '../components/CartBodyTable';
     import CartFooter from '../components/CartFooter';
+    import Notify from "./Notify";
 
     export default {
         name: 'cart-wrapper',
@@ -21,6 +23,7 @@
             CartHeader,
             CartBodyTable,
             CartFooter,
+            Notify,
         },
         data () {
             return {

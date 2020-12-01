@@ -6,7 +6,6 @@
                 <product-list/>
                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
                     <cart-wrapper/>
-                    <notify/>
                 </div>
             </div>
         </div>
@@ -17,7 +16,6 @@
 
     import CompTitle from './components/CompTitle';
     import ProductList from './components/ProductList';
-    import Notify from './components/Notify';
     import CartWrapper from './components/CartWrapper';
 
     export default {
@@ -25,7 +23,7 @@
         components: {
             CompTitle,
             ProductList,
-            Notify,
+
             CartWrapper
         },
         data () {
