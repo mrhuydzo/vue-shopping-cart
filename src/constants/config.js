@@ -1,5 +1,4 @@
 export const  NOTI_EMPTY_PRODUCT  = 'Đéo có cc j'
-export const  NOTI_ACT_UPDATE  = 'Sửa thành công'
 
 export const NOTI_GREATER_THAN_ONE = {
     group: 'noti',
@@ -20,4 +19,11 @@ export const NOTI_ACT_DELETE = {
     title: 'Success',
     type: 'info',
     text: 'Xóa thành công'
+}
+
+export const NOTI_ACT_UPDATE = {
+    group: 'noti',
+    title: 'Success',
+    type: 'info',
+    text: 'Sửa thành công'
 }

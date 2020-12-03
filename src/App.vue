@@ -10,21 +10,28 @@
             </div>
             <notifications group="noti"/>
         </div>
+        <loading :class="{show: isLoading}"/>
     </div>
 </template>
 
 <script>
 
+    import {mapState} from 'vuex';
     import CompTitle from './components/CompTitle';
     import ProductList from './components/ProductList';
     import CartWrapper from './components/CartWrapper';
+    import Loading from "./components/Loading";
 
     export default {
         name: 'app',
         components: {
             CompTitle,
             ProductList,
-            CartWrapper
+            CartWrapper,
+            Loading
+        },
+        computed: {
+            ...mapState(['isLoading'])
         },
         data () {
             return {
