@@ -10,8 +10,8 @@
             <h4 class="media-heading">{{product.name}}</h4>
             <p>{{product.summary}}</p>
             <template  v-if="product.canBuy">
-                <input name="quantity-product-1" type="number" value="1" min="1"/>
-                <a data-product="1" href="#" class="price"> {{formatPrice}} </a>
+                <input type="text" value="1" min="1" v-model="quantity"/>
+                <a @click.prevent="handleBuyProduct" data-product="1" href="#" class="price"> {{formatPrice}} </a>
             </template>
             <span v-else="!product.canBuy" class="price"> {{formatPrice}}</span>
         </div>
@@ -20,12 +20,15 @@
 </template>
 
 <script>
-    import {toCurrency} from "../helper";
+    import {toCurrency,validateQuantity} from "../helper";
+    import {NOTI_GREATER_THAN_ONE,NOTI_ACT_ADD} from "../constants/config";
+    import {mapActions} from "vuex";
+
     export default {
         name: 'product-item',
         data () {
             return {
-
+                quantity: 1
             }
         },
         props: {
@@ -40,6 +43,26 @@
             },
             formatPrice() {
                 return toCurrency(this.product.price,'VND','right')
+            }
+        },
+        methods: {
+            ...mapActions({
+                'actBuyProduct': 'cart/actBuyProduct'
+            }),
+            handleBuyProduct(e) {
+                const check = validateQuantity(this.quantity);
+                if (check) {
+                    let numQuantity = parseInt(this.quantity);
+                    let data = {
+                        product: this.product,
+                        quantity: numQuantity
+                    }
+                    this.quantity = 1
+                    this.actBuyProduct(data)
+                    this.$notify(NOTI_ACT_ADD);
+                }else {
+                    this.$notify(NOTI_GREATER_THAN_ONE);
+                }
             }
         }
     }

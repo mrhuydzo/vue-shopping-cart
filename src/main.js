@@ -1,8 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import Vuex from 'vuex';
+import Vue from 'vue';
+import Notifications from 'vue-notification';
+import App from './App.vue';
 import store from "./store";
 
+Vue.use(Notifications);
 new Vue({
   el: '#app',
   store,

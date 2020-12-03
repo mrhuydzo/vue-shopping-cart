@@ -8,6 +8,7 @@
                     <cart-wrapper/>
                 </div>
             </div>
+            <notifications group="noti"/>
         </div>
     </div>
 </template>
@@ -23,13 +24,15 @@
         components: {
             CompTitle,
             ProductList,
-
             CartWrapper
         },
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App'
             }
+        },
+        mounted() {
+
         }
     }
 </script>
